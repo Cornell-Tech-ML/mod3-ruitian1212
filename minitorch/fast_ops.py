@@ -30,6 +30,7 @@ Fn = TypeVar("Fn")
 
 
 def njit(fn: Fn, **kwargs: Any) -> Fn:
+    """Definition of jit function"""
     return _njit(inline="always", **kwargs)(fn)  # type: ignore
 
 
@@ -183,6 +184,7 @@ def tensor_map(
                 broadcast_index(out_index, out_shape, in_shape, in_index)
                 mapped_data = fn(in_storage[index_to_position(in_index, in_strides)])
                 out[i] = mapped_data
+
     return njit(_map, parallel=True)  # type: ignore
 
 
@@ -246,8 +248,6 @@ def tensor_zip(
                 )
 
                 out[i] = zipped_data
-
-        
 
     return njit(_zip, parallel=True)  # type: ignore
 
@@ -346,7 +346,7 @@ def _tensor_matrix_multiply(
     a_batch_stride = a_strides[0] if a_shape[0] > 1 else 0
     b_batch_stride = b_strides[0] if b_shape[0] > 1 else 0
 
-    D = a_shape[-1]  
+    D = a_shape[-1]
     A, B, C = out_shape[-3:]
     for a in prange(A):
         for b in prange(B):
@@ -362,6 +362,7 @@ def _tensor_matrix_multiply(
                     a * out_strides[-3] + b * out_strides[-2] + c * out_strides[-1]
                 )
                 out[out_index] = sum_result
+
 
 tensor_matrix_multiply = njit(_tensor_matrix_multiply, parallel=True)
 assert tensor_matrix_multiply is not None

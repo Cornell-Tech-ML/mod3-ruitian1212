@@ -235,6 +235,7 @@ class LT(Function):
         a_shape, b_shape = ctx.saved_values
         return zeros(a_shape), zeros(b_shape)
 
+
 class EQ(Function):
     """Decide whether elements in a tensor equal to elements in another"""
 
