@@ -392,7 +392,7 @@ Below is a table showing the comparison of matrix multiplication execution time 
 | 512                 | 0.94337          | 0.19329          |
 | 1024                | 8.11608          | 0.86809          |
 
-![comparison](comparison.png)
+![comparison](./comparison.png)
 
 ## Task 5: Training
 
