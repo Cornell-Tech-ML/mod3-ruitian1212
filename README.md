@@ -396,6 +396,7 @@ Below is a table showing the comparison of matrix multiplication execution time 
 
 ## Task 5: Training
 
+
 ### CPU
 
 1. `Split` dataset
