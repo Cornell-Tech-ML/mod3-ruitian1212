@@ -168,9 +168,21 @@ def tensor_map(
         in_shape: Shape,
         in_strides: Strides,
     ) -> None:
-        # TODO: Implement for Task 3.1.
-        raise NotImplementedError("Need to implement for Task 3.1")
+        out_size: int = len(out)
 
+        if np.array_equal(out_strides, in_strides) and np.array_equal(
+            out_shape, in_shape
+        ):
+            for i in prange(out_size):
+                out[i] = fn(in_storage[i])
+        else:
+            for i in prange(out_size):
+                out_index = np.zeros(MAX_DIMS, dtype=np.int32)
+                in_index = np.zeros(MAX_DIMS, dtype=np.int32)
+                to_index(i, out_shape, out_index)
+                broadcast_index(out_index, out_shape, in_shape, in_index)
+                mapped_data = fn(in_storage[index_to_position(in_index, in_strides)])
+                out[i] = mapped_data
     return njit(_map, parallel=True)  # type: ignore
 
 
@@ -208,8 +220,34 @@ def tensor_zip(
         b_shape: Shape,
         b_strides: Strides,
     ) -> None:
-        # TODO: Implement for Task 3.1.
-        raise NotImplementedError("Need to implement for Task 3.1")
+        out_size: int = len(out)
+
+        if (
+            np.array_equal(out_strides, a_strides)
+            and np.array_equal(out_strides, b_strides)
+            and np.array_equal(out_shape, a_shape)
+            and np.array_equal(out_shape, b_shape)
+        ):
+            for i in prange(out_size):
+                out[i] = fn(a_storage[i], b_storage[i])
+        else:
+            for i in prange(out_size):
+                out_index: Index = np.zeros(MAX_DIMS, dtype=np.int32)
+                a_index: Index = np.zeros(MAX_DIMS, dtype=np.int32)
+                b_index: Index = np.zeros(MAX_DIMS, dtype=np.int32)
+                to_index(i, out_shape, out_index)
+
+                broadcast_index(out_index, out_shape, a_shape, a_index)
+                broadcast_index(out_index, out_shape, b_shape, b_index)
+
+                zipped_data = fn(
+                    a_storage[index_to_position(a_index, a_strides)],
+                    b_storage[index_to_position(b_index, b_strides)],
+                )
+
+                out[i] = zipped_data
+
+        
 
     return njit(_zip, parallel=True)  # type: ignore
 
@@ -244,8 +282,20 @@ def tensor_reduce(
         a_strides: Strides,
         reduce_dim: int,
     ) -> None:
-        # TODO: Implement for Task 3.1.
-        raise NotImplementedError("Need to implement for Task 3.1")
+        out_size: int = len(out)
+        reduce_size: int = a_shape[reduce_dim]
+
+        for i in prange(out_size):
+            out_index: Index = np.zeros(MAX_DIMS, dtype=np.int32)
+            to_index(i, out_shape, out_index)
+            a_index = index_to_position(out_index, a_strides)
+            reduced_val = out[i]
+            for j in range(reduce_size):
+                reduced_val = fn(
+                    reduced_val,
+                    a_storage[a_index + j * a_strides[reduce_dim]],
+                )
+            out[i] = reduced_val
 
     return njit(_reduce, parallel=True)  # type: ignore
 
@@ -296,9 +346,22 @@ def _tensor_matrix_multiply(
     a_batch_stride = a_strides[0] if a_shape[0] > 1 else 0
     b_batch_stride = b_strides[0] if b_shape[0] > 1 else 0
 
-    # TODO: Implement for Task 3.2.
-    raise NotImplementedError("Need to implement for Task 3.2")
-
+    D = a_shape[-1]  
+    A, B, C = out_shape[-3:]
+    for a in prange(A):
+        for b in prange(B):
+            for c in prange(C):
+                sum_result: float = 0.0
+                a_index: int = a * a_batch_stride + b * a_strides[-2]
+                b_index: int = a * b_batch_stride + c * b_strides[-1]
+                for _ in range(D):
+                    sum_result += a_storage[a_index] * b_storage[b_index]
+                    a_index += a_strides[-1]
+                    b_index += b_strides[-2]
+                out_index = (
+                    a * out_strides[-3] + b * out_strides[-2] + c * out_strides[-1]
+                )
+                out[out_index] = sum_result
 
 tensor_matrix_multiply = njit(_tensor_matrix_multiply, parallel=True)
 assert tensor_matrix_multiply is not None

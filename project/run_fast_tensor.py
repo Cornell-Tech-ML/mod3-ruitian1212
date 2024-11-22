@@ -44,8 +44,7 @@ class Linear(minitorch.Module):
 
     def forward(self, x):
         # TODO: Implement for Task 3.5.
-        raise NotImplementedError("Need to implement for Task 3.5")
-
+        return x @ self.weights.value + self.bias.value
 
 class FastTrain:
     def __init__(self, hidden_layers, backend=FastTensorBackend):
