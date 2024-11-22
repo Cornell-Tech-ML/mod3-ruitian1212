@@ -384,6 +384,7 @@ None
 
 Below is a table showing the comparison of matrix multiplication execution time between `FastOps` and `CudaOps`:
 
+
 | Matrix Size (n x n) | FastOps Time (s) | CudaOps Time (s) |
 |---------------------|------------------|------------------|
 | 64                  | 0.00300          | 0.00567          |
