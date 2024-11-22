@@ -394,6 +394,7 @@ Below is a table showing the comparison of matrix multiplication execution time 
 
 ![comparison](./comparison.png)
 
+
 ## Task 5: Training
 
 
