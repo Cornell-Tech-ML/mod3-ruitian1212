@@ -1,4 +1,5 @@
 import random
+import time  
 
 import numba
 
@@ -11,8 +12,12 @@ if numba.cuda.is_available():
 
 
 def default_log_fn(epoch, total_loss, correct, losses):
-    print("Epoch ", epoch, " loss ", total_loss, "correct", correct)
-
+    log_message = f"Epoch {epoch} loss {total_loss} correct {correct}"
+    if elapsed_time is not None:
+        log_message += f" time (this epoch): {elapsed_time:.2f}s"
+    if total_elapsed_time is not None:
+        log_message += f" total time: {total_elapsed_time:.2f}s"
+    print(log_message)
 
 def RParam(*shape, backend):
     r = minitorch.rand(shape, backend=backend) - 0.5
@@ -64,8 +69,10 @@ class FastTrain:
         optim = minitorch.SGD(self.model.parameters(), learning_rate)
         BATCH = 10
         losses = []
+        start_time = time.time()  # Start timing before the loop
 
         for epoch in range(max_epochs):
+            epoch_start_time = time.time()  # Start timing for the epoch
             total_loss = 0.0
             c = list(zip(data.X, data.y))
             random.shuffle(c)
@@ -90,13 +97,21 @@ class FastTrain:
             losses.append(total_loss)
             # Logging
             if epoch % 10 == 0 or epoch == max_epochs:
+                epoch_end_time = time.time()  # End timing for the epoch
+                elapsed_time = epoch_end_time - epoch_start_time  # Time for the epoch
+                total_elapsed_time = epoch_end_time - start_time  # Total elapsed time
                 X = minitorch.tensor(data.X, backend=self.backend)
                 y = minitorch.tensor(data.y, backend=self.backend)
                 out = self.model.forward(X).view(y.shape[0])
                 y2 = minitorch.tensor(data.y)
                 correct = int(((out.detach() > 0.5) == y2).sum()[0])
-                log_fn(epoch, total_loss, correct, losses)
-
+                log_fn(
+                epoch,
+                total_loss,
+                correct,
+                losses,
+                elapsed_time=elapsed_time,
+                total_elapsed_time=total_elapsed_time)
 
 if __name__ == "__main__":
     import argparse
