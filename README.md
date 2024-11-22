@@ -758,3 +758,121 @@ Epoch 480 loss 0.0491088008550254 correct 50 time (this epoch): 1.52s total time
 Epoch 490 loss 0.05375539879743384 correct 50 time (this epoch): 1.99s total time: 794.90s
 
 ```
+
+### Bigger Model Test
+
+#### CPU
+   ```bash
+!cd $DIR; PYTHONPATH=/content/$DIR python3.12 project/run_fast_tensor.py --BACKEND cpu --HIDDEN 200 --DATASET xor --RATE 0.05
+   ```
+
+   ```bash
+Epoch 0 loss 6.744592140273106 correct 33 time (this epoch): 16.92s total time: 16.92s
+Epoch 10 loss 3.6084653827907167 correct 37 time (this epoch): 0.20s total time: 22.64s
+Epoch 20 loss 5.956487179998347 correct 44 time (this epoch): 0.20s total time: 24.66s
+Epoch 30 loss 2.5009001114021543 correct 44 time (this epoch): 0.20s total time: 26.69s
+Epoch 40 loss 1.398325684818603 correct 45 time (this epoch): 0.20s total time: 28.77s
+Epoch 50 loss 2.9859532507573485 correct 45 time (this epoch): 0.20s total time: 30.92s
+Epoch 60 loss 3.687810042535164 correct 45 time (this epoch): 0.21s total time: 32.96s
+Epoch 70 loss 1.5351067170275634 correct 46 time (this epoch): 0.22s total time: 35.16s
+Epoch 80 loss 2.374750795018267 correct 47 time (this epoch): 0.20s total time: 37.22s
+Epoch 90 loss 5.232524556900462 correct 45 time (this epoch): 0.21s total time: 39.29s
+Epoch 100 loss 2.82010067702965 correct 46 time (this epoch): 0.21s total time: 41.39s
+Epoch 110 loss 1.760153134374327 correct 48 time (this epoch): 0.20s total time: 43.48s
+Epoch 120 loss 0.622572680908759 correct 49 time (this epoch): 0.20s total time: 45.50s
+Epoch 130 loss 0.08669908452943692 correct 49 time (this epoch): 0.20s total time: 47.52s
+Epoch 140 loss 0.5433171537826617 correct 49 time (this epoch): 0.20s total time: 49.57s
+Epoch 150 loss 1.1261553752263844 correct 49 time (this epoch): 0.21s total time: 51.64s
+Epoch 160 loss 1.6540907338471154 correct 49 time (this epoch): 0.21s total time: 53.74s
+Epoch 170 loss 1.9817633400006047 correct 49 time (this epoch): 0.20s total time: 55.82s
+Epoch 180 loss 0.24484846584385592 correct 49 time (this epoch): 0.20s total time: 57.85s
+Epoch 190 loss 1.656946707261902 correct 49 time (this epoch): 0.20s total time: 59.96s
+Epoch 200 loss 0.5541528659780334 correct 50 time (this epoch): 0.20s total time: 62.00s
+Epoch 210 loss 0.4812385636501468 correct 50 time (this epoch): 0.20s total time: 64.08s
+Epoch 220 loss 1.1770882077216294 correct 50 time (this epoch): 0.21s total time: 66.23s
+Epoch 230 loss 1.2839272028380606 correct 50 time (this epoch): 0.20s total time: 68.24s
+Epoch 240 loss 1.219468496016749 correct 50 time (this epoch): 0.21s total time: 70.28s
+Epoch 250 loss 0.1802317163708574 correct 49 time (this epoch): 0.21s total time: 72.31s
+Epoch 260 loss 0.36368186808237074 correct 50 time (this epoch): 0.21s total time: 74.38s
+Epoch 270 loss 0.35272200884077876 correct 50 time (this epoch): 0.23s total time: 76.45s
+Epoch 280 loss 0.9414311297806438 correct 50 time (this epoch): 0.20s total time: 78.56s
+Epoch 290 loss 0.6789498066477625 correct 50 time (this epoch): 0.20s total time: 80.57s
+Epoch 300 loss 0.22450452228604778 correct 50 time (this epoch): 0.20s total time: 82.58s
+Epoch 310 loss 0.5625920787466878 correct 50 time (this epoch): 0.20s total time: 84.61s
+Epoch 320 loss 1.4353120872945042 correct 50 time (this epoch): 0.21s total time: 86.63s
+Epoch 330 loss 0.5320656936306271 correct 50 time (this epoch): 0.22s total time: 88.74s
+Epoch 340 loss 0.4306749733334319 correct 50 time (this epoch): 0.20s total time: 90.82s
+Epoch 350 loss 0.4732826181154691 correct 50 time (this epoch): 0.20s total time: 92.85s
+Epoch 360 loss 0.8306809901669586 correct 50 time (this epoch): 0.20s total time: 94.88s
+Epoch 370 loss 0.10059356040939826 correct 50 time (this epoch): 0.20s total time: 96.91s
+Epoch 380 loss 0.1845787704417324 correct 50 time (this epoch): 0.21s total time: 98.93s
+Epoch 390 loss 0.3152034218926888 correct 50 time (this epoch): 0.21s total time: 101.04s
+Epoch 400 loss 0.7529115116332368 correct 50 time (this epoch): 0.20s total time: 103.11s
+Epoch 410 loss 0.03935636329247549 correct 50 time (this epoch): 0.20s total time: 105.11s
+Epoch 420 loss 0.132909052921662 correct 50 time (this epoch): 0.20s total time: 107.16s
+Epoch 430 loss 0.34778904965874663 correct 50 time (this epoch): 0.20s total time: 109.16s
+Epoch 440 loss 0.2030326078252478 correct 50 time (this epoch): 0.20s total time: 111.18s
+Epoch 450 loss 0.23621771573767752 correct 50 time (this epoch): 0.22s total time: 113.32s
+Epoch 460 loss 0.2577865219859889 correct 50 time (this epoch): 0.20s total time: 115.39s
+Epoch 470 loss 0.1377309164990148 correct 50 time (this epoch): 0.20s total time: 117.46s
+Epoch 480 loss 0.12648014536420016 correct 50 time (this epoch): 0.20s total time: 119.51s
+Epoch 490 loss 0.20629798497230248 correct 50 time (this epoch): 0.20s total time: 121.54s
+   ```
+
+#### GPU
+   ```bash
+!cd $DIR; PYTHONPATH=/content/$DIR python3.12 project/run_fast_tensor.py --BACKEND gpu --HIDDEN 200 --DATASET xor --RATE 0.05
+   ```
+
+   ```bash
+Epoch 0 loss 16.83372820332553 correct 24 time (this epoch): 3.85s total time: 3.85s
+Epoch 10 loss 7.339296155948825 correct 42 time (this epoch): 1.57s total time: 20.22s
+Epoch 20 loss 3.2040854174932116 correct 39 time (this epoch): 1.57s total time: 36.12s
+Epoch 30 loss 1.7011850562765856 correct 49 time (this epoch): 1.54s total time: 51.90s
+Epoch 40 loss 1.857841414433557 correct 43 time (this epoch): 1.57s total time: 67.64s
+Epoch 50 loss 2.7536531720117723 correct 48 time (this epoch): 1.62s total time: 83.62s
+Epoch 60 loss 1.2498987670541832 correct 48 time (this epoch): 1.56s total time: 99.40s
+Epoch 70 loss 1.4317624793999557 correct 48 time (this epoch): 1.58s total time: 115.23s
+Epoch 80 loss 1.8199826783201947 correct 49 time (this epoch): 1.55s total time: 131.07s
+Epoch 90 loss 1.2665527256870366 correct 48 time (this epoch): 1.64s total time: 147.08s
+Epoch 100 loss 3.601512439081298 correct 47 time (this epoch): 1.56s total time: 162.95s
+Epoch 110 loss 3.870723602390203 correct 43 time (this epoch): 1.56s total time: 178.78s
+Epoch 120 loss 1.088365521926412 correct 49 time (this epoch): 1.63s total time: 194.80s
+Epoch 130 loss 0.22764776219714888 correct 49 time (this epoch): 1.57s total time: 210.63s
+Epoch 140 loss 1.538360732726618 correct 49 time (this epoch): 1.56s total time: 226.51s
+Epoch 150 loss 0.9590056549337334 correct 48 time (this epoch): 1.57s total time: 242.47s
+Epoch 160 loss 1.2218522343859046 correct 49 time (this epoch): 1.62s total time: 258.44s
+Epoch 170 loss 1.223812329441424 correct 50 time (this epoch): 1.71s total time: 274.49s
+Epoch 180 loss 2.8575901910478256 correct 46 time (this epoch): 1.58s total time: 290.39s
+Epoch 190 loss 0.6826570939188736 correct 50 time (this epoch): 1.56s total time: 306.22s
+Epoch 200 loss 0.7012433846391863 correct 49 time (this epoch): 1.62s total time: 322.19s
+Epoch 210 loss 0.32637156244023047 correct 50 time (this epoch): 1.56s total time: 338.06s
+Epoch 220 loss 0.7609863923178664 correct 50 time (this epoch): 1.60s total time: 354.02s
+Epoch 230 loss 0.48532490283492585 correct 50 time (this epoch): 1.58s total time: 369.93s
+Epoch 240 loss 0.3286630888603699 correct 49 time (this epoch): 1.62s total time: 385.78s
+Epoch 250 loss 0.2855815611419199 correct 50 time (this epoch): 1.56s total time: 401.61s
+Epoch 260 loss 0.534292083763329 correct 50 time (this epoch): 1.61s total time: 417.40s
+Epoch 270 loss 0.2665530564714631 correct 50 time (this epoch): 1.69s total time: 433.33s
+Epoch 280 loss 0.3878581837030855 correct 49 time (this epoch): 1.56s total time: 449.10s
+Epoch 290 loss 0.5031281006904904 correct 50 time (this epoch): 1.54s total time: 464.92s
+Epoch 300 loss 0.22648855612459795 correct 48 time (this epoch): 1.55s total time: 480.95s
+Epoch 310 loss 1.0707479550916317 correct 49 time (this epoch): 1.62s total time: 496.80s
+Epoch 320 loss 0.21100336560229882 correct 50 time (this epoch): 1.59s total time: 512.60s
+Epoch 330 loss 0.13173406334876758 correct 50 time (this epoch): 1.56s total time: 528.49s
+Epoch 340 loss 0.6025584899852344 correct 50 time (this epoch): 1.56s total time: 544.26s
+Epoch 350 loss 0.3401547985183492 correct 50 time (this epoch): 1.62s total time: 560.17s
+Epoch 360 loss 0.11855010676109436 correct 50 time (this epoch): 1.55s total time: 575.91s
+Epoch 370 loss 0.7769267652127991 correct 49 time (this epoch): 1.56s total time: 591.74s
+Epoch 380 loss 0.09881449603718458 correct 49 time (this epoch): 1.57s total time: 607.64s
+Epoch 390 loss 0.28377088664224115 correct 50 time (this epoch): 1.61s total time: 623.41s
+Epoch 400 loss 0.14978352756992871 correct 49 time (this epoch): 1.58s total time: 639.12s
+Epoch 410 loss 0.6320053824618905 correct 50 time (this epoch): 1.55s total time: 654.87s
+Epoch 420 loss 0.3566354713805988 correct 50 time (this epoch): 1.56s total time: 670.61s
+Epoch 430 loss 0.2359098892435224 correct 50 time (this epoch): 1.56s total time: 686.54s
+Epoch 440 loss 0.28807742887502125 correct 50 time (this epoch): 1.62s total time: 702.40s
+Epoch 450 loss 0.20961182752046476 correct 49 time (this epoch): 1.64s total time: 718.26s
+Epoch 460 loss 0.21226715207193741 correct 50 time (this epoch): 1.56s total time: 734.02s
+Epoch 470 loss 0.16903241075157155 correct 50 time (this epoch): 1.54s total time: 749.81s
+Epoch 480 loss 0.1955537568722543 correct 50 time (this epoch): 1.64s total time: 765.77s
+Epoch 490 loss 0.0848712830178767 correct 50 time (this epoch): 1.56s total time: 781.58s
+   ```
