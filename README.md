@@ -465,7 +465,7 @@ Below is a table showing the comparison of matrix multiplication execution time 
    ```bash
    !cd $DIR; PYTHONPATH=/content/$DIR python3 project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET simple --RATE 0.05
    ```
-   
+
 
    ```bash
         Epoch 0 loss 4.254117624968052 correct 46 time (this epoch): 17.95s total time: 17.95s
