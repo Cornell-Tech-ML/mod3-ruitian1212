@@ -4,7 +4,7 @@
 
 ## Task 1: Parallelization
 
-Diagnostics output from `project/parallel_check.py`:
+Diagnostics output from running `project/parallel_check.py`:
 
 ````bash
 MAP
